@@ -31,7 +31,7 @@ Branches:
 
 `master` - simplest setup
 
-`counter`
+`counter` - https://github.com/samhstn/elm-simple-starter/tree/counter
 
 `counter-with-localstorage` (TODO)
 
