@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/samhstn/elm-simple-starter.svg?branch=master)](https://travis-ci.org/samhstn/elm-simple-starter)
+
 # Elm simple starter
 
 A quick boilerplate setup with the following tools integrated:
@@ -28,8 +30,13 @@ In separate terminal windows run:
 Branches:
 
 `master` - simplest setup
-`counter` (TODO)
+
+`counter`
+
 `counter-with-localstorage` (TODO)
+
 `http` (TODO)
+
 `ports` (TODO)
+
 `routing` (TODO)
