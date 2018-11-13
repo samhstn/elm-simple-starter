@@ -1,0 +1,31 @@
+{
+  "name": "elm-simple-starter",
+  "version": "1.0.0",
+  "repository": "https://github.com/samhstn/elm-simple-starter.git",
+  "description": "super simple starter setup for elm",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "build": "npm run build:elm && npm run build:js",
+    "build:elm": "elm make src/Main.elm --output js/elm.js --optimize",
+    "build:js": "browserify js/app.js --o public/index.js",
+    "watch:server": "nodemon server.js",
+    "watch:elm": "elm-live src/Main.elm -- --output js/elm.js",
+    "watch:js": "watchify js/app.js -o public/index.js",
+    "format": "elm-format src --yes"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "elm-format": "^0.8.1",
+    "elm-live": "^3.2.3",
+    "nodemon": "^1.18.6",
+    "watchify": "^3.11.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "browserify": "^16.2.3",
+    "express": "^4.16.4"
+  }
+}
