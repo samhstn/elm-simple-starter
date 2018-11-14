@@ -37,6 +37,6 @@ Branches:
 
 `http` - https://github.com/samhstn/elm-simple-starter/tree/http
 
-`ports` (TODO)
+`ports` - https://github.com/samhstn/elm-simple-starter/tree/ports
 
 `routing` (TODO)
