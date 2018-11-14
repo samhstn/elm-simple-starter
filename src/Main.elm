@@ -1,8 +1,11 @@
 module Main exposing (main)
 
 import Browser
-import Html exposing (Html, text, div, button)
+import Html exposing (Html, button, div, text)
 import Html.Events exposing (onClick)
+import Http
+import Json.Decode as Decode exposing (Decoder)
+import Json.Encode as Encode
 
 
 main =
@@ -16,7 +19,35 @@ main =
 
 init : () -> ( Model, Cmd Msg )
 init _ =
-    ( initialModel, Cmd.none )
+    ( initialModel, getCount )
+
+
+getCount : Cmd Msg
+getCount =
+    Http.send NewCount (Http.get "/api/count" countDecoder)
+
+
+increment : Cmd Msg
+increment =
+    Http.send NewCount (Http.post "/api/count" (Http.jsonBody (typeEncoder "increment")) countDecoder)
+
+
+decrement : Cmd Msg
+decrement =
+    Http.send NewCount (Http.post "/api/count" (Http.jsonBody (typeEncoder "decrement")) countDecoder)
+
+
+typeEncoder : String -> Encode.Value
+typeEncoder t =
+    Encode.object
+        [ ( "type", Encode.string t )
+        ]
+
+
+countDecoder : Decoder Model
+countDecoder =
+    Decode.map Model
+        (Decode.field "count" Decode.int)
 
 
 initialModel : Model
@@ -34,6 +65,7 @@ type Msg
     = NoOp
     | Increment
     | Decrement
+    | NewCount (Result Http.Error Model)
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -43,10 +75,20 @@ update msg model =
             ( model, Cmd.none )
 
         Increment ->
-            ( { model | count = model.count + 1 }, Cmd.none )
+            ( model, increment )
 
         Decrement ->
-            ( { model | count = model.count - 1 }, Cmd.none )
+            ( model, decrement )
+
+        NewCount (Ok newModel) ->
+            ( newModel, Cmd.none )
+
+        NewCount (Err err) ->
+            let
+                _ =
+                    Debug.log "ERR" err
+            in
+            ( model, Cmd.none )
 
 
 view : Model -> Html Msg
