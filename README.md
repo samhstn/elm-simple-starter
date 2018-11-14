@@ -33,7 +33,7 @@ Branches:
 
 `counter` - https://github.com/samhstn/elm-simple-starter/tree/counter
 
-`counter-with-localstorage` (TODO)
+`counter-with-localstorage` - https://github.com/samhstn/elm-simple-starter/tree/counter-with-localstorage
 
 `http` (TODO)
 
