@@ -39,4 +39,4 @@ Branches:
 
 `ports` - https://github.com/samhstn/elm-simple-starter/tree/ports
 
-`routing` (TODO)
+`routing` - https://github.com/samhstn/elm-simple-starter/tree/routing
