@@ -5,6 +5,7 @@ import Browser.Navigation as Nav
 import Html exposing (Html, a, div, text)
 import Html.Attributes exposing (href, style)
 import Url exposing (Url)
+import Url.Parser as Parser exposing (Parser, oneOf, s, top)
 
 
 main =
@@ -44,15 +45,16 @@ type Page
 
 urlToPage : Url.Url -> Page
 urlToPage url =
-    case url.path of
-        "/" ->
-            Home
+    Parser.parse parser url
+        |> Maybe.withDefault NotFound
 
-        "/search" ->
-            Search
 
-        _ ->
-            NotFound
+parser : Parser (Page -> a) a
+parser =
+    oneOf
+        [ Parser.map Home top
+        , Parser.map Search (s "search")
+        ]
 
 
 type Msg
@@ -119,15 +121,16 @@ navItem model page =
         textDecoration =
             if model.page == page then
                 "underline"
+
             else
                 "none"
     in
-        a
-            [ href <| pageToLink page
-            , style "text-decoration" textDecoration
-            ]
-            [ text <| pageToString page
-            ]
+    a
+        [ href <| pageToLink page
+        , style "text-decoration" textDecoration
+        ]
+        [ text <| pageToString page
+        ]
 
 
 pageToLink : Page -> String
