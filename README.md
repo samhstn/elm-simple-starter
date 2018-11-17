@@ -40,3 +40,5 @@ Branches:
 `ports` - https://github.com/samhstn/elm-simple-starter/tree/ports
 
 `routing` - https://github.com/samhstn/elm-simple-starter/tree/routing
+
+`timeout` - https://github.com/samhstn/elm-simple-starter/tree/timeout
