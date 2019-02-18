@@ -21,11 +21,11 @@ npm start
 
 (after following the `Quick Start` the above)
 
-In separate terminal windows run:
+Run:
 
-+ `npm run watch:elm`
-+ `npm run watch:js`
-+ `npm run watch:server`
+```bash
+npm run watch
+```
 
 Branches:
 
