@@ -24,17 +24,28 @@ init _ =
 
 getCount : Cmd Msg
 getCount =
-    Http.send NewCount (Http.get "/api/count" countDecoder)
+    Http.get
+        { url = "/api/count"
+        , expect = Http.expectJson NewCount countDecoder
+        }
 
 
 increment : Cmd Msg
 increment =
-    Http.send NewCount (Http.post "/api/count" (Http.jsonBody (typeEncoder "increment")) countDecoder)
+    Http.post
+        { url = "/api/count"
+        , body = Http.jsonBody (typeEncoder "increment")
+        , expect = Http.expectJson NewCount countDecoder
+        }
 
 
 decrement : Cmd Msg
 decrement =
-    Http.send NewCount (Http.post "/api/count" (Http.jsonBody (typeEncoder "decrement")) countDecoder)
+    Http.post
+        { url = "/api/count"
+        , body = Http.jsonBody (typeEncoder "increment")
+        , expect = Http.expectJson NewCount countDecoder
+        }
 
 
 typeEncoder : String -> Encode.Value
@@ -84,10 +95,13 @@ update msg model =
             ( newModel, Cmd.none )
 
         NewCount (Err err) ->
-            let
-                _ =
-                    Debug.log "ERR" err
-            in
+            -- Commented as was getting the compile error:
+            -- `But the --optimize flag only works if all `Debug` functions are removed!`
+            -- TODO: Handle this error case properly
+            -- let
+            --     _ =
+            --         Debug.log "ERR" err
+            -- in
             ( model, Cmd.none )
 
 
