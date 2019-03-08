@@ -12,17 +12,17 @@ git clone https://github.com/samhstn/elm-simple-starter.git && cd elm-simple-sta
 npm install
 npm run build
 npm start
+# the server should be running on: http://localhost:3000
 ```
 
 # Development Start
 
-(after following the `Quick Start` the above)
-
-In separate terminal windows run:
-
-+ `npm run watch:elm`
-+ `npm run watch:js`
-+ `npm run watch:server`
+```bash
+git clone https://github.com/samhstn/elm-simple-starter.git && cd elm-simple-starter
+npm install
+npm run dev
+# the dev server should be running on: http://localhost:3000
+```
 
 Check out the different `branches` for the `Elm` example you are looking for
 
