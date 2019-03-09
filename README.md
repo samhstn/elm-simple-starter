@@ -1,11 +1,11 @@
-# Elm simple starter
+# Elm simple starter
 
 An `Elm` (`v0.19`) boilerplate integrating with the following tools:
 + [Browserify](https://github.com/browserify/browserify)
 + [Elm live](https://github.com/wking-io/elm-live)
 + [Express](https://github.com/expressjs/express)
 
-# Quick Start
+# Quick Start
 
 ```bash
 git clone https://github.com/samhstn/elm-simple-starter.git && cd elm-simple-starter
